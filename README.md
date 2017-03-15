@@ -33,3 +33,15 @@ angular.
 我们的组件是隔离和安全的“外部影响”。同样，我们不必担心，我们可能会意外破坏应用程序的其他部分。我们的组件内部发生了什么，停留在组件内部。
 更容易孤立地测试我们的组件。
 https://docs.angularjs.org/img/tutorial/tutorial_03.png具体描述
+#过滤器
+
+```js
+Search: <input ng-model="$ctrl.query" />
+
+<li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query">
+  <span>{{phone.name}}</span>
+  <p>{{phone.snippet}}</p>
+</li>
+```
+AngularJS将输入框的值绑定到指定的数据模型变量，ngModel并保持两者同步。
+用户输入到输入框（绑定到）的数据立即可用作列表中继器（）中的过滤器输入。当对数据模型的更改导致中继器的输入改变时，中继器有效地更新DOM以反映模型的当前状态
