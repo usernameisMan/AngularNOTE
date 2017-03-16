@@ -46,3 +46,23 @@ Search: <input ng-model="$ctrl.query" />
 AngularJS将输入框的值绑定到指定的数据模型变量，ngModel并保持两者同步。
 用户输入到输入框（绑定到）的数据立即可用作列表中继器（）中的过滤器输入。当对数据模型的更改导致中继器的输入改变时，中继器有效地更新DOM以反映模型的当前状态
 自动更新视图
+#XHR and inject
+```js
+//为了避免，直接用函数参数直接inject服务，导致js代码压缩后，angular 找不到服务建议用以下写法
+//我们在控制器中使用AngularJS服务$http向你的Web服务器发起一个HTTP请求，
+angular.
+  module('phoneList').
+  component('phoneList', {
+    templateUrl: 'phone-list/phone-list.template.html',
+    controller: ['$http',
+      function PhoneListController($http) {
+        var self = this;
+        self.orderProp = 'age';
+
+        $http.get('phones/phones.json').then(function(response) {
+          self.phones = response.data;
+        });
+      }
+    ]
+  });
+```
