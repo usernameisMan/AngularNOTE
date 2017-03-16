@@ -66,3 +66,6 @@ angular.
     ]
   });
 ```
+<img ng-src="{{phone.imageUrl}}">
+如果我们仅仅用一个正常src属性来进行绑定（<img class="diagram" src="{{phone.imageUrl}}">），浏览器会把AngularJS的{{ 表达式 }}标记直接进行字面解释，并且发起一个向非法urlhttp://localhost:8000/app/{{phone.imageUrl}}的请求。因为浏览器载入页面时，同时也会请求载入图片，AngularJS在页面载入完毕时才开始编译——浏览器请求载入图片时{{phone.imageUrl}}还没得到编译！有了这个ngSrc指令会避免产生这种情况，使用ngSrc指令防止浏览器产生一个指向非法地址的请求。
+
